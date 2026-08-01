@@ -1,3 +1,4 @@
+
 :root {
   --ink: #f9f3fa;
   --muted: #bcaec1;
@@ -73,10 +74,7 @@ a { color: inherit; }
   color: #1c0d1d;
   background: linear-gradient(135deg, var(--pink), var(--lav));
 }
-.topbar nav {
-  display: flex;
-  gap: 18px;
-}
+.topbar nav { display: flex; gap: 18px; }
 .topbar nav a {
   color: var(--muted);
   font-size: .78rem;
@@ -124,10 +122,7 @@ dialog h3 {
   line-height: .94;
   letter-spacing: -.04em;
 }
-.hero h1 em {
-  color: var(--pink);
-  font-weight: 400;
-}
+.hero h1 em { color: var(--pink); }
 .hero-sub {
   max-width: 720px;
   margin: 25px 0 0;
@@ -159,7 +154,6 @@ dialog h3 {
   color: #fff;
   background: rgba(255,255,255,.04);
 }
-.primary:hover, .ghost:hover { transform: translateY(-1px); }
 .ticket {
   width: min(520px, 100%);
   margin-top: 38px;
@@ -263,11 +257,8 @@ dialog h3 {
 .section-heading.split {
   grid-template-columns: 1.2fr .8fr;
 }
-.section-heading.split > div h2 { margin-top: 6px; }
-
 .constellation-wrap {
   position: relative;
-  min-height: 640px;
   border: 1px solid var(--line);
   border-radius: 28px;
   overflow: hidden;
@@ -275,49 +266,109 @@ dialog h3 {
     radial-gradient(circle at center, rgba(159, 115, 200, .12), transparent 45%),
     rgba(255,255,255,.025);
 }
-.constellation-lines {
+.main-constellation-wrap {
+  min-height: 690px;
+  padding-top: 88px;
+}
+.constellation-message {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  width: min(88%, 560px);
+  text-align: center;
+  pointer-events: none;
+}
+.constellation-message span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(255, 210, 222, .82);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.constellation-message strong {
+  display: inline-block;
+  color: #fff7fb;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.55rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: .03em;
+  text-shadow:
+    0 0 16px rgba(255, 210, 230, .35),
+    0 0 38px rgba(199, 167, 255, .22);
+}
+.main-constellation {
+  position: relative;
+  min-height: 600px;
+}
+.main-svg,
+.cluster-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
-.constellation-lines path {
+.main-svg path,
+.cluster-svg path {
   fill: none;
-  stroke: rgba(255,255,255,.14);
-  stroke-width: 1.2;
+  stroke: rgba(255,255,255,.12);
+  stroke-width: 1.3;
+  stroke-linecap: round;
 }
-.star {
+.main-star,
+.cluster-star {
   position: absolute;
   border: 0;
   padding: 0;
-  color: #fff;
-  background: none;
+  background: transparent;
   cursor: pointer;
-  font-size: 2rem;
-  text-shadow: 0 0 18px rgba(255,222,154,.75);
-  transition: transform .2s ease, color .2s ease;
+  color: #fff;
 }
-.star:hover, .star.active {
+.main-star { width: 58px; height: 58px; }
+.main-star .star-glyph,
+.cluster-star .star-glyph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
   color: var(--gold);
-  transform: scale(1.45) rotate(12deg);
+  text-shadow: 0 0 18px rgba(255,222,154,.82);
 }
-.s1 { left: 10%; top: 20%; }
-.s2 { left: 24%; top: 11%; }
-.s3 { left: 37%; top: 25%; }
-.s4 { left: 53%; top: 15%; }
-.s5 { left: 69%; top: 25%; }
-.s6 { right: 11%; top: 13%; }
-.s7 { left: 15%; top: 53%; }
-.s8 { left: 29%; top: 43%; }
-.s9 { left: 45%; top: 59%; }
-.s10 { left: 61%; top: 45%; }
-.s11 { right: 18%; top: 57%; }
-.s12 { left: 27%; bottom: 13%; }
+.main-star .star-glyph { font-size: 2.25rem; }
+.cluster-star .star-glyph { font-size: 1.35rem; }
+.main-star .star-letter,
+.cluster-star .star-letter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: #fff;
+  z-index: 2;
+}
+.main-star .star-letter { font-size: .82rem; }
+.main-star:hover,
+.main-star.active,
+.cluster-star:hover,
+.cluster-star.active {
+  transform: scale(1.16);
+  filter: brightness(1.08);
+}
+.main-star:hover .star-glyph,
+.main-star.active .star-glyph,
+.cluster-star:hover .star-glyph,
+.cluster-star.active .star-glyph { color: #ffeab8; }
 .star-card {
   margin: -52px auto 0;
   position: relative;
   z-index: 3;
-  width: min(650px, calc(100% - 42px));
+  width: min(760px, calc(100% - 42px));
   border: 1px solid var(--line);
   border-radius: 22px;
   padding: 24px 26px;
@@ -328,7 +379,8 @@ dialog h3 {
 .star-card > span,
 .dialog-kicker,
 .future-card-top,
-.capsule small {
+.capsule small,
+.cluster-number {
   color: var(--pink);
   font-size: .62rem;
   font-weight: 800;
@@ -343,7 +395,65 @@ dialog h3 {
   color: var(--muted);
   line-height: 1.65;
 }
-
+.atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.cluster-card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 18px;
+  background:
+    radial-gradient(circle at top right, rgba(255,183,206,.10), transparent 35%),
+    rgba(255,255,255,.03);
+}
+.cluster-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.cluster-head h3 {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: 1.45rem;
+}
+.cluster-head p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: .84rem;
+}
+.cluster-sky {
+  position: relative;
+  min-height: 250px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(199,167,255,.08), transparent 40%),
+    rgba(9, 4, 11, .55);
+}
+.cluster-info {
+  margin-top: 12px;
+  min-height: 98px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 12px;
+}
+.cluster-info strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: .95rem;
+}
+.cluster-info p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: .92rem;
+}
 .capsule-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -360,11 +470,6 @@ dialog h3 {
     var(--card);
   cursor: pointer;
   text-align: left;
-  transition: transform .2s ease, background .2s ease;
-}
-.capsule:hover {
-  transform: translateY(-5px);
-  background-color: rgba(255,255,255,.075);
 }
 .capsule-icon {
   width: 54px;
@@ -421,7 +526,6 @@ dialog p {
   font-size: .78rem;
   font-weight: 700;
 }
-
 .future-section {
   display: grid;
   grid-template-columns: .8fr 1.2fr;
@@ -459,7 +563,6 @@ dialog p {
 }
 .future-card h3 { font-size: 2.25rem; }
 .future-card p { color: var(--muted); line-height: 1.6; }
-
 .meter-shell {
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -502,13 +605,11 @@ dialog p {
   background: #fff;
   transition: left 1.4s cubic-bezier(.16,1,.3,1);
 }
-.ghost.light { margin-top: 3px; }
 #meterResult {
   margin: 16px 0 0;
   color: var(--pink);
   font-weight: 700;
 }
-
 .letter-panel {
   width: min(820px, 100%);
   margin: 0 auto;
@@ -565,7 +666,14 @@ dialog p {
   font-family: "DM Serif Display", serif;
   font-size: 1.6rem;
 }
-
+.final-letter small {
+  display: block;
+  margin-top: 8px;
+  color: #e7dbe9;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: .88rem;
+  font-weight: 700;
+}
 footer {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -577,17 +685,14 @@ footer {
   color: var(--muted);
   font-size: .68rem;
 }
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 70px;
-  }
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; padding-top: 70px; }
   .hero-orbit { min-height: 420px; }
   .section-heading { grid-template-columns: 1fr; }
   .capsule-grid { grid-template-columns: repeat(2, 1fr); }
   .future-section { grid-template-columns: 1fr; }
   .intro-strip { grid-template-columns: 1fr; }
+  .atlas-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .topbar nav { display: none; }
@@ -595,51 +700,10 @@ footer {
   .hero h1 { font-size: clamp(3rem, 15vw, 5.2rem); }
   .planet { width: 210px; height: 210px; }
   .capsule-grid { grid-template-columns: 1fr; }
-  .constellation-wrap { min-height: 560px; }
   .ticket { flex-direction: column; }
-  .future-card-top, footer { flex-direction: column; }
-  .meter-labels span:nth-child(2),
-  .meter-labels span:nth-child(3) { display: none; }
-}
-
-
-.constellation-message {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  z-index: 2;
-  transform: translateX(-50%);
-  width: min(88%, 560px);
-  text-align: center;
-  pointer-events: none;
-}
-.constellation-message span {
-  display: block;
-  margin-bottom: 6px;
-  color: rgba(255, 210, 222, .82);
-  font-size: .68rem;
-  font-weight: 800;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
-.constellation-message strong {
-  display: inline-block;
-  color: #fff7fb;
-  font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(1.55rem, 3.2vw, 2.5rem);
-  font-weight: 400;
-  letter-spacing: .03em;
-  text-shadow:
-    0 0 16px rgba(255, 210, 230, .35),
-    0 0 38px rgba(199, 167, 255, .22);
-}
-
-@media (max-width: 640px) {
-  .constellation-message {
-    top: 18px;
-    width: min(92%, 420px);
-  }
-  .constellation-message strong {
-    font-size: 1.35rem;
-  }
+  .future-card-top, footer, .cluster-head { flex-direction: column; }
+  .main-constellation-wrap { min-height: 760px; }
+  .main-star { width: 52px; height: 52px; }
+  .constellation-message { top: 18px; width: min(92%, 420px); }
+  .constellation-message strong { font-size: 1.35rem; }
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <canvas id="sky" aria-hidden="true"></canvas>
-
   <div class="grain" aria-hidden="true"></div>
 
   <header class="topbar">
@@ -22,9 +22,9 @@
       <span>Girlfriend Day Observatory</span>
     </a>
     <nav>
-      <a href="#constellation">Stars</a>
-      <a href="#capsules">Capsules</a>
-      <a href="#future">Future Us</a>
+      <a href="#constellation">Main Sky</a>
+      <a href="#atlas">Atlas</a>
+      <a href="#future">Future</a>
       <a href="#letter">Letter</a>
     </nav>
   </header>
@@ -35,12 +35,12 @@
         <p class="eyebrow">A private sky made for one person</p>
         <h1>I couldn't buy you a star,<br><em>so I built you a whole sky.</em></h1>
         <p class="hero-sub">
-          Happy Girlfriend Day. Every star below hides something I love, remember,
-          or still want to do with you.
+          Happy Girlfriend Day. This observatory now turns your reasons into constellations,
+          so the sky literally spells out how I feel.
         </p>
 
         <div class="hero-actions">
-          <a class="primary" href="#constellation">Enter the observatory</a>
+          <a class="primary" href="#constellation">See the message in the stars</a>
           <button class="ghost" id="randomStarBtn" type="button">Pick a star for me</button>
         </div>
 
@@ -67,58 +67,54 @@
     <section class="section intro-strip">
       <div>
         <span class="section-no">01</span>
-        <p>This is not a game night.</p>
+        <p>This is your updated sky.</p>
       </div>
-      <h2>It is a tiny digital observatory about <em>you, us, and everything I notice.</em></h2>
+      <h2>The main constellation now <em>spells HAPPY GIRLFRIENDS DAY</em> and every extra reason becomes another little constellation.</h2>
     </section>
 
     <section class="section constellation-section" id="constellation">
       <div class="section-heading">
         <div>
           <span class="section-no">02</span>
-          <p>Constellation of reasons</p>
+          <p>Message in the sky</p>
         </div>
-        <h2>Tap the stars.</h2>
-        <p>Each one opens a reason, a detail, or a tiny thing that makes you you.</p>
+        <h2>Happy Girlfriends Day</h2>
+        <p>Each star carries one reason. Together, they spell the whole message.</p>
       </div>
 
-      <div class="constellation-wrap">
+      <div class="constellation-wrap main-constellation-wrap">
         <div class="constellation-message" aria-hidden="true">
           <span>Tonight’s sky says</span>
-          <strong>Happy Girlfriend’s Day</strong>
+          <strong>Happy Girlfriends Day</strong>
         </div>
-        <svg class="constellation-lines" viewBox="0 0 1000 640" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M120 150 L260 90 L390 180 L540 115 L700 175 L850 105" />
-          <path d="M170 360 L315 285 L465 390 L620 300 L795 375" />
-          <path d="M260 90 L315 285 M390 180 L465 390 M540 115 L620 300 M700 175 L795 375" />
-          <path d="M170 360 L290 520 L465 390 L635 515 L795 375" />
-        </svg>
-
-        <button class="star s1" data-title="Your laugh" data-copy="The kind that makes me forget what I was saying because now I’m just watching you laugh.">✦</button>
-        <button class="star s2" data-title="Your little rants" data-copy="I genuinely love the way a five-minute story becomes a full documentary when you care about something.">✦</button>
-        <button class="star s3" data-title="Your softness" data-copy="You can be strong and still be so gentle with the people you love. I notice that.">✦</button>
-        <button class="star s4" data-title="Your brain" data-copy="The way you think, argue, notice patterns, and somehow remember the weirdest details is ridiculously attractive.">✦</button>
-        <button class="star s5" data-title="Your face when you’re trying not to smile" data-copy="You are terrible at hiding it. Please never get better at that.">✦</button>
-        <button class="star s6" data-title="Your effort" data-copy="You show up. Even when you’re tired. Even when no one sees the effort behind it. I see it.">✦</button>
-        <button class="star s7" data-title="The way we talk" data-copy="Serious for ten minutes, completely unserious for twenty, back to serious like nothing happened.">✦</button>
-        <button class="star s8" data-title="How safe you feel" data-copy="Not boring-safe. Home-safe. Like I can be stupid, honest, quiet, annoying, tired, and still be wanted.">✦</button>
-        <button class="star s9" data-title="Your ambition" data-copy="You want more from your life, and you actually work for it. That makes me proud of you.">✦</button>
-        <button class="star s10" data-title="Us" data-copy="Somehow my favorite part is still the ordinary stuff. Sitting. Talking. Watching. Existing next to you.">✦</button>
-        <button class="star s11" data-title="Your chaos" data-copy="Respectfully, you are occasionally a menace. Unfortunately for me, that is part of the charm.">✦</button>
-        <button class="star s12" data-title="The future" data-copy="Not because I know every detail. Because I like the idea that there are still so many versions of us we haven’t met yet.">✦</button>
+        <div id="mainConstellation" class="main-constellation" aria-label="Main constellation of reasons"></div>
       </div>
 
       <div class="star-card" id="starCard" aria-live="polite">
         <span>STAR LOG</span>
         <h3>Choose a star</h3>
-        <p>There are twelve little notes hiding in the constellation, and the sky is quietly wishing you Happy Girlfriend’s Day too.</p>
+        <p>Tap any letter in the sky to open the reason attached to it.</p>
       </div>
+    </section>
+
+    <section class="section atlas-section" id="atlas">
+      <div class="section-heading split">
+        <div>
+          <span class="section-no">03</span>
+          <p>Constellation atlas</p>
+          <h2>Every extra reason still gets a sky.</h2>
+        </div>
+        <p>
+          The message constellation uses the first 19 reasons. The rest are grouped into mini constellations below, so nothing gets left out.
+        </p>
+      </div>
+      <div id="atlasGrid" class="atlas-grid"></div>
     </section>
 
     <section class="section capsules-section" id="capsules">
       <div class="section-heading split">
         <div>
-          <span class="section-no">03</span>
+          <span class="section-no">04</span>
           <p>Open when...</p>
           <h2>Four emergency capsules.</h2>
         </div>
@@ -153,13 +149,13 @@
         <span class="dialog-kicker">MESSAGE RECEIVED</span>
         <h3 id="capsuleTitle"></h3>
         <p id="capsuleCopy"></p>
-        <div class="dialog-signoff">— from your extremely biased boyfriend</div>
+        <div class="dialog-signoff">— from your extremely biased girlfriend</div>
       </dialog>
     </section>
 
     <section class="section future-section" id="future">
       <div class="future-copy">
-        <span class="section-no">04</span>
+        <span class="section-no">05</span>
         <p>Future us generator</p>
         <h2>Press the button.<br>We get a future memory.</h2>
         <p class="muted">No productivity. No itinerary optimization. Just a small thing to look forward to.</p>
@@ -182,7 +178,7 @@
     <section class="section meter-section">
       <div class="section-heading">
         <div>
-          <span class="section-no">05</span>
+          <span class="section-no">06</span>
           <p>Scientific measurement</p>
         </div>
         <h2>How obsessed am I?</h2>
@@ -206,7 +202,7 @@
 
     <section class="section letter-section" id="letter">
       <div class="letter-panel">
-        <span class="section-no">06</span>
+        <span class="section-no">07</span>
         <p>Final transmission</p>
         <h2>One last thing.</h2>
         <p class="muted">
@@ -233,7 +229,7 @@
             I hope you always know how loved, admired, wanted, and chosen you are.
             Not just today. Not just when things are easy. You.
           </p>
-          <strong>Happy Girlfriend Day, pretty girl. ♥</strong>
+          <strong>Happy Girlfriend Day, pretty girl. ♥<br><small>— from your extremely biased girlfriend</small></strong>
         </div>
       </div>
     </section>
@@ -244,6 +240,6 @@
     <span>01 AUG ✦ FOR YOU</span>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
