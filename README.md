@@ -1,19 +1,8 @@
+# Girlfriend Day Observatory · Star Map Edition V6
 
-# Girlfriend Day Observatory
+This build deliberately uses new filenames (`observatory-v6.css` and `observatory-v6.js`) so the browser cannot keep using the old cached CSS/JS.
 
-Updated version:
-- main sky now spells **HAPPY GIRLFRIENDS DAY**
-- each letter uses one of the provided reasons
-- all remaining reasons are grouped into additional mini constellations
-- signoff updated to **from your extremely biased girlfriend**
-
-## Publish with GitHub Pages
-1. Create a new repo, for example `girlfriend-day-observatory`.
-2. Upload `index.html`, `styles.css`, `script.js`, `README.md`, and `.nojekyll` to the repository root.
-3. Commit.
-4. Open **Settings → Pages**.
-5. Choose **Deploy from a branch**.
-6. Choose **main** and **/(root)**.
-7. Save and wait for deployment.
-
-No external images or API keys are required.
+- Main sky: stars and connecting lines literally draw HAPPY GIRLFRIENDS DAY.
+- Atlas: Orion, Cassiopeia, Ursa Major, Cygnus, Scorpius, Leo, Gemini, Taurus, Lyra, and Draco-inspired layouts.
+- All 150 reasons preserved.
+- Signoff: from your extremely biased girlfriend.
